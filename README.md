@@ -23,7 +23,7 @@ Link: https://drrobertson9673.github.io/Password-Generator/
 
 ## Credits
 
-I took a function from stackoverflow.com to randomly shuffle an array.
+I took a function from stackoverflow.com to randomly shuffle a chosen array.
 
 https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 
