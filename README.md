@@ -19,7 +19,7 @@ The application can be accessed via an internet browser and the results can be s
 
 Link: https://drrobertson9673.github.io/Password-Generator/
 
-![screenshot of the application results](/assets/Images/Screenshot.png)
+![screenshot of the application results](assets/Images/Screenshot.png)
 
 ## Credits
 
