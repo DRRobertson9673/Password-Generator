@@ -99,6 +99,7 @@ var upperCasedCharacters = [
   'Z',
 ];
 
+//below defines variables needed in the application
 var characterRange = [];
 var passwordArray = [];
 var requiredLength = 0;
@@ -129,16 +130,18 @@ function shuffle(array) {
 // Function to generate password using user input
 function generatePassword() {
 
+//this resets the previous inputs made for the password if the user has clicked the button for a second time
 characterRange = [];
 passwordArray = [];
 currentLength = 0;
 
+//below receives a required password length from the user and also checks it is a number and between the two required limits
 requiredLength = prompt("how long would you like your password to be? Please enter a number between 10 and 64")
-
 while (isNaN(requiredLength) || requiredLength < 6 || requiredLength > 64) {
   requiredLength = prompt("your input is incorrect, please enter a NUMBER between 10 and 64");
 }
 
+//below asks the user if they want to include a type of character in their password. If yes it adds those characters to an array but also adds one of those characters to the password array to ensure there is at least one and then adds 1 to the password length.
 var addLowerCase = prompt("do you want to include lower case characters in your password? Yes or No").toUpperCase();
   while (addLowerCase !== "YES" && addLowerCase !== "NO") {
     addLowerCase = prompt("your input is incorrect, please enter a yes or no").toUpperCase();
@@ -178,15 +181,18 @@ var addSpecial = prompt("do you want to include special characters in your passw
       currentLength++;
     }
 
+//below checks that the user has not selected no to every character type option
 if (addLowerCase === "NO" && addUpperCase === "NO" && addNumeric === "NO" && addSpecial === "NO") {
   alert('You have no selected any characters for your password, please try again');
 }
 
+//below checks to see if the password is the required length and if not adds a new character and adds 1 to password length
 while (currentLength < requiredLength) {
   getRandom(characterRange);
   currentLength++;
 }
-  
+
+//below shuffles the password array to add an extra level or randomness due to the first four characters being in the order lower case, upper case, number then special character if teh user chose to use all types
 shuffle(passwordArray);
 
 }
