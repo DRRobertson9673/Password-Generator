@@ -153,7 +153,7 @@ var addLowerCase = prompt("do you want to include lower case characters in your 
     }
 
 var addUpperCase = prompt("do you want to include upper case characters in your password? Yes or No").toUpperCase();
-  while (addLowerCase !== "YES" && addLowerCase !== "NO") {
+  while (addUpperCase !== "YES" && addUpperCase !== "NO") {
     addUpperCase = prompt("your input is incorrect, please enter a yes or no").toUpperCase();
     }
     if (addUpperCase === "YES") {
