@@ -102,8 +102,10 @@ var upperCasedCharacters = [
 //below defines variables needed in the application
 var characterRange = [];
 var passwordArray = [];
-var requiredLength = 0;
+var requiredLength = 10;
 var currentLength = 0;
+
+
 
 // Function for getting a random element from an array
 function getRandom(arr) {
@@ -130,62 +132,6 @@ function shuffle(array) {
 // Function to generate password using user input
 function generatePassword() {
 
-//this resets the previous inputs made for the password if the user has clicked the button for a second time
-characterRange = [];
-passwordArray = [];
-currentLength = 0;
-
-//below receives a required password length from the user and also checks it is a number and between the two required limits
-requiredLength = prompt("how long would you like your password to be? Please enter a number between 10 and 64")
-while (isNaN(requiredLength) || requiredLength < 6 || requiredLength > 64) {
-  requiredLength = prompt("your input is incorrect, please enter a NUMBER between 10 and 64");
-}
-
-//below asks the user if they want to include a type of character in their password. If yes it adds those characters to an array but also adds one of those characters to the password array to ensure there is at least one and then adds 1 to the password length.
-var addLowerCase = prompt("do you want to include lower case characters in your password? Yes or No").toUpperCase();
-  while (addLowerCase !== "YES" && addLowerCase !== "NO") {
-    addLowerCase = prompt("your input is incorrect, please enter a yes or no").toUpperCase();
-    }    
-    if (addLowerCase === "YES") {
-      characterRange = characterRange.concat(lowerCasedCharacters);
-      getRandom(lowerCasedCharacters);
-      currentLength++;
-    }
-
-var addUpperCase = prompt("do you want to include upper case characters in your password? Yes or No").toUpperCase();
-  while (addUpperCase !== "YES" && addUpperCase !== "NO") {
-    addUpperCase = prompt("your input is incorrect, please enter a yes or no").toUpperCase();
-    }
-    if (addUpperCase === "YES") {
-      characterRange = characterRange.concat(upperCasedCharacters);
-      getRandom(upperCasedCharacters);
-      currentLength++;
-    }
-        
-var addNumeric = prompt("do you want to include numeric characters in your password? Yes or No").toUpperCase();
-  while (addNumeric !== "YES" && addNumeric !== "NO") {
-    addNumeric = prompt("your input is incorrect, please enter a yes or no").toUpperCase();
-    }    
-    if (addNumeric === "YES") {
-      characterRange = characterRange.concat(numericCharacters);
-      getRandom(numericCharacters);
-      currentLength++;
-    }
-var addSpecial = prompt("do you want to include special characters in your password? Yes or No").toUpperCase();
-  while (addSpecial !== "YES" && addSpecial !== "NO") {
-    addSpecial = prompt("your input is incorrect, please enter a yes or no").toUpperCase();
-    }    
-    if (addSpecial === "YES") {
-      characterRange = characterRange.concat(specialCharacters);
-      getRandom(specialCharacters);
-      currentLength++;
-    }
-
-//below checks that the user has not selected no to every character type option
-if (addLowerCase === "NO" && addUpperCase === "NO" && addNumeric === "NO" && addSpecial === "NO") {
-  alert('You have no selected any characters for your password, please try again');
-}
-
 //below checks to see if the password is the required length and if not adds a new character and adds 1 to password length
 while (currentLength < requiredLength) {
   getRandom(characterRange);
@@ -202,11 +148,73 @@ var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
+  // this resets any selections previously made if a password has already been generated
+  characterRange = [];
+  passwordArray = [];
+  currentLength = 0;
+  //this next function checks that at least one character type has been selected
+  checkSelection();
+  //these functions check if each character type has been selected and if they have adds them to the possible character array and adds at least one of each type tp the password
+  getLowerCasedValue();
+  getUpperCasedValue();
+  getNumericValue();
+  getSpecialValue();
+  //the functions below create the rest of the password
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
-
   passwordText.value = passwordArray.join("");
 } 
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+// here is the code to get the required password length using the slider
+var slider = document.getElementById("slider");
+var output = document.getElementById("output");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+  requiredLength = this.value;
+}
+
+// here is the code for each of the toggle boxes. If the box is checked it adds the array of characters to the possible array of characters used in the password
+function getLowerCasedValue() {
+  var isChecked = document.getElementById("lowerCasedSwitch").checked;
+  if(isChecked){
+    characterRange = characterRange.concat(lowerCasedCharacters);
+    getRandom(lowerCasedCharacters);
+    currentLength++;
+  }
+}
+function getUpperCasedValue() {
+  var isChecked = document.getElementById("upperCasedSwitch").checked;
+  if(isChecked){
+    characterRange = characterRange.concat(upperCasedCharacters);
+    getRandom(upperCasedCharacters);
+    currentLength++;
+  }
+}
+function getNumericValue() {
+  var isChecked = document.getElementById("numericSwitch").checked;
+  if(isChecked){
+    characterRange = characterRange.concat(numericCharacters);
+    getRandom(numericCharacters);
+    currentLength++;
+  }
+}
+function getSpecialValue() {
+  var isChecked = document.getElementById("specialSwitch").checked;
+  if(isChecked){
+    characterRange = characterRange.concat(specialCharacters);
+    getRandom(specialCharacters);
+    currentLength++;
+  }
+}
+
+// this is the fucntion that checks that at least one character type is selected. If not it alerts the user
+function checkSelection() {
+  if (document.getElementById("lowerCasedSwitch").checked === false && document.getElementById("upperCasedSwitch").checked === false && document.getElementById("numericSwitch").checked === false && document.getElementById("specialSwitch").checked === false) {
+  alert('Please select at least one character type');
+  }
+}
