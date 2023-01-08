@@ -105,10 +105,10 @@ button[disabled] {
   appearance: none;
   display: block;
   width: 100%;
-  padding-top: 20px;
+  padding-top: 45px;
   padding-left: 15px;
   padding-right: 15px;
-  padding-bottom: 10px;
+  padding-bottom: 25px;
   font-size: 1.2rem;
   text-align: center;
   margin-top: 20px;
@@ -289,7 +289,6 @@ input:checked + .slider:before {
     font-size: 8px;
   }
   #password {
-    padding-top: 10px;
     font-size: .8rem;
   }
   .card {
