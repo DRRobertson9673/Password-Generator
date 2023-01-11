@@ -218,3 +218,23 @@ function checkSelection() {
   alert('Please select at least one character type');
   }
 }
+
+// Code to copy the password to users clipboard
+var copyBtn = document.querySelector('#copyIcon');
+
+copyBtn.addEventListener('click', copyText);
+
+function copyText() {
+  var copyText = document.getElementById("password");
+  navigator.clipboard.writeText(copyText.value);
+} 
+
+// code to change the copy icon to white on hover
+function hover(img)
+{
+ img.src = "../Password-Generator/assets/Images/CopyWhite.png"
+}
+function hoverOut(img){
+  img.src = "../Password-Generator/assets/Images/Copy.png"
+
+ }
