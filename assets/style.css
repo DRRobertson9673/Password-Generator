@@ -281,6 +281,10 @@ input:checked + .slider:before {
    #copyIcon {
     margin-top: 42px;
    }
+   .img {
+    padding-bottom: 5px;
+    height: 30px;
+ }
 }
 
  /* below here are options to view the application on a small sized screen */
@@ -310,7 +314,11 @@ input:checked + .slider:before {
   #copy {
     height: 100px;
    }
-   #copyIcon {
+  #copyIcon {
     margin-top: 41px;
    }
+  .img {
+    padding-left: 10px;
+    height: 25px;
+ }
 }
