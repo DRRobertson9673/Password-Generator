@@ -59,6 +59,7 @@ header {
 .card-body {
   display: flex;
   border: 0;
+  margin-bottom: 15px;
 }
 
 .card-footer {
@@ -111,8 +112,6 @@ button[disabled] {
   padding-bottom: 25px;
   font-size: 1.1rem;
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 10px;
   resize: none;
   overflow: hidden;
   color: white;
@@ -257,8 +256,6 @@ input:checked + .slider:before {
  }
  #copy {
   background-color: var(--myGrey);
-  margin-top: 20px;
-  height: 110px;
   padding-right: 30px;
  }
  #copyIcon {
