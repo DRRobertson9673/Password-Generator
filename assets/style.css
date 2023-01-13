@@ -100,8 +100,6 @@ button[disabled] {
 }
 
 #password {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   background-color: var(--myGrey);
   appearance: none;
   display: block;
@@ -275,9 +273,6 @@ input:checked + .slider:before {
   header {
     font-size: 12px;
   }
-  #copy {
-    height: 100px;
-   }
    #copyIcon {
     margin-top: 42px;
    }
@@ -311,12 +306,6 @@ input:checked + .slider:before {
   .card {
     padding: 0px 20px;
   }
-  #copy {
-    height: 100px;
-   }
-  #copyIcon {
-    margin-top: 41px;
-   }
   .img {
     padding-left: 10px;
     height: 25px;
