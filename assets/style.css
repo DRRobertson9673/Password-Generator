@@ -60,6 +60,7 @@ header {
   display: flex;
   border: 0;
   margin-bottom: 15px;
+  background-color: var(--myGrey);
 }
 
 .card-footer {
